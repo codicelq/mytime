@@ -1,0 +1,138 @@
+{
+	"name": "mytime",
+	"displayName": "My Time",
+	"description": "Time Track on a Markdown document",
+	"author": "Luca Quintarelli <lq@codicelq.com>",
+	"publisher": "codicelq",
+	"version": "0.9.0",
+	"engines": {
+		"vscode": "^1.51.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onLanguage:markdown"
+	],
+	"icon": "images/icon.png",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/codicelq/mytime.git"
+	},
+	"contributes": {
+		"commands": [{
+				"command": "mytime.newDay",
+				"title": "My time: New Day"
+			},
+			{
+				"command": "mytime.newTask",
+				"title": "My time: New Task"
+			},
+			{
+				"command": "mytime.newBreak",
+				"title": "My time: New Break"
+			},
+			{
+				"command": "mytime.summary",
+				"title": "My time: Summary"
+			}
+		],
+		"menus": {
+			"commandPalette": [{
+					"command": "mytime.newDay",
+					"when": "editorLangId == markdown"
+				},
+				{
+					"command": "mytime.newTask",
+					"when": "editorLangId == markdown"
+				},
+				{
+					"command": "mytime.newBreak",
+					"when": "editorLangId == markdown"
+				},
+				{
+					"command": "mytime.summary",
+					"when": "editorLangId == markdown"
+				}
+
+			]
+		},
+		"configuration": {
+			"title": "MyTime",
+			"properties": {
+				"mytime.startMessage": {
+					"type": "string",
+					"default": "Let's go!|Good morning|Let's start",
+					"description": "This is the name of the first task when you create a \"New Day\" section. If you use a \"|\" you can set more messages, one random is chosen to start the day.."
+				},
+				"mytime.taskPlaceholder": {
+					"type": "string",
+					"default": "What did you do ?",
+					"description": "This is a placeholder question used when you use \"New Task\" command"
+				},
+				"mytime.newDateFormat": {
+					"type": "string",
+					"default": "iiii dd MMMM",
+					"markdownDescription": "Format of the date in the section \"New Date\" complete syntax is available [here](https://date-fns.org/v2.16.1/docs/format)"
+				},
+				"mytime.newDateLanguage": {
+					"type": "string",
+					"default": "en",
+					"enum": ["en","it"],
+					"enumDescriptions": ["English", "Italian"],
+					"description": "Code of the language en, it"
+				},
+				"mytime.timeSpanFormat": {
+					"type": "string",
+					"default": "hoursAndMinutes",
+					"enum": ["hoursAndMinutes","decimalHours","both"],
+					"enumDescriptions": ["Hours and minutes", "Hours with two decimals", "both other choices" ],
+					"description": "Used to view TimeSpan"
+				},
+				"mytime.timeSpanHoursAndMinutesFormat": {
+					"type": "string",
+					"default": "HH:mm",
+					"description": "Format used to view time span if hours and minutes is chosen"
+				},
+				"mytime.timeSpanStep": {
+					"type": "number",
+					"default": 15,
+					"enum": [1, 5, 10, 15, 30, 60],
+					"description": "Minimum minutes step of time span on summary"
+				}
+				
+			}
+		}
+	},
+	"main": "./dist/extension.js",
+	"scripts" : {
+		"vscode:prepublish": "npm run package",
+		"compile": "webpack --devtool nosources-source-map --config ./build/node-extension.webpack.config.js",
+		"watch": "webpack --watch --devtool nosources-source-map  --config ./build/node-extension.webpack.config.js",
+		"package": "webpack --mode production --config ./build/node-extension.webpack.config.js",
+		"test-compile": "tsc -p ./",
+		"test-watch": "tsc -watch -p ./",
+		"pretest": "npm run test-compile && npm run lint",
+		"lint": "eslint src --ext ts",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/glob": "^7.1.3",
+		"@types/mocha": "^8.0.0",
+		"@types/node": "^12.11.7",
+		"@types/vscode": "^1.51.0",
+		"@typescript-eslint/eslint-plugin": "^4.1.1",
+		"@typescript-eslint/parser": "^4.1.1",
+		"eslint": "^7.9.0",
+		"glob": "^7.1.6",
+		"mocha": "^8.1.3",
+		"ts-loader": "^8.0.11",
+		"typescript": "^4.0.2",
+		"vscode-test": "^1.4.0",
+		"webpack": "^5.5.1",
+		"webpack-cli": "^4.2.0"
+	},
+	"dependencies": {
+		"date-fns": "^2.16.1"
+	}
+}
