@@ -36,12 +36,6 @@ To use the command you need to select all the tasks to summarize, if some rows i
 
 ![NewBreak](demo/mytime-summary-split.png)
 
-## Extension Settings
-
-This extension is controlled by some user settings, to view and change the user settigs use Visual Studio Code menu `Code -> Preferences -> Settings` and search `Mytime`;
-
-![NewBreak](demo/mytime-settings.png)
-
 ## Release Notes
 
 ### 0.9.0
