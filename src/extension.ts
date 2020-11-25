@@ -2,7 +2,6 @@ import * as vscode from 'vscode';
 import { enUS, it } from 'date-fns/locale';
 import { format, addMinutes, differenceInMinutes, parse, Locale } from 'date-fns';
 
-const _demoMode = false;
 const _newLine = "\n";
 
 Object.defineProperty(exports, "__esModule", { value: true });
@@ -80,9 +79,6 @@ function newTaskLine (isBreak: Boolean) {
 				newTask = new Task(getConfigurationRandomString('startMessage'), new Date());
 			} else {
 				let now = new Date();
-				if (_demoMode) {
-					now = addMinutes(prevTask.end as Date, getRandomInt(10, 91));
-				}
 				newTask = new Task(getConfigurationRandomString('taskPlaceholder'), prevTask.end as Date, now);
 				newTask.text += ` (${TaskSpan.timeSpanToString(newTask.timeSpanMinutes(), getConfiguration('timeSpanFormat'), 0)})`;
 			}
@@ -153,7 +149,7 @@ function summaryBlock() {
 							if (taskSpanMap.has(task.text)) {
 								(taskSpanMap.get(task.text) as TaskSpan).spanMinutes += task.timeSpanMinutes();
 							} else {
-								let taskSpan = new TaskSpan(task.text, task.timeSpanMinutes());
+								let taskSpan = new TaskSpan(task.text.trim(), task.timeSpanMinutes());
 								taskSpanMap.set(task.text, taskSpan);
 								maxTitleLength = Math.max(maxTitleLength, task.text.length);
 							}
