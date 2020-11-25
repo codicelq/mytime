@@ -38,10 +38,6 @@ To use the command you need to select all the tasks to summarize, if some rows i
 
 ## Release Notes
 
-### 0.9.5
-
-Fix Readme images
-
 ### 0.9.0
 
 Initial release
