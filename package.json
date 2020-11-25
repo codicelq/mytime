@@ -19,6 +19,9 @@
 		"type": "git",
 		"url": "https://github.com/codicelq/mytime.git"
 	},
+	"keywords": [
+		"Time Tracking", "Time", "Tracker", "Markdown"
+	],
 	"contributes": {
 		"commands": [{
 				"command": "mytime.newDay",
