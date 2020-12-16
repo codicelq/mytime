@@ -38,6 +38,10 @@ To use the command you need to select all the tasks to summarize, if some rows i
 
 ## Release Notes
 
+### 0.9.5
+
+Added quick picker for create Task and Break
+
 ### 0.9.0
 
 Initial release

@@ -4,7 +4,7 @@
 	"description": "Time Track on a Markdown document",
 	"author": "Luca Quintarelli <lq@codicelq.com>",
 	"publisher": "codicelq",
-	"version": "0.9.0",
+	"version": "0.9.5",
 	"engines": {
 		"vscode": "^1.51.0"
 	},
@@ -71,7 +71,32 @@
 				"mytime.taskPlaceholder": {
 					"type": "string",
 					"default": "What did you do ?",
-					"description": "This is a placeholder question used when you use \"New Task\" command"
+					"description": "This is question used when you use \"New Task\" command"
+				},
+				"mytime.taskTimePlaceholder": {
+					"type": "string",
+					"default": "When did you finish or suspend the task ?",
+					"description": "This is question used when you use \"New Task\" command"
+				},
+				"mytime.newBreakPlaceholder": {
+					"type": "string",
+					"default": "Break",
+					"description": "Default name for a new break"
+				},
+				"mytime.newTaskPlaceholder": {
+					"type": "string",
+					"default": "New task...",
+					"description": "Default name for a new task"
+				},
+				"mytime.taskList": {
+					"type": "string",
+					"default": "Mail|Meeting|Chat",
+					"description": "Task list, use pipe as separtor"
+				},
+				"mytime.breakList": {
+					"type": "string",
+					"default": "Coffee|Launch|Tea",
+					"description": "Break list, use pipe as separtor"
 				},
 				"mytime.newDateFormat": {
 					"type": "string",
@@ -88,8 +113,8 @@
 				"mytime.timeSpanFormat": {
 					"type": "string",
 					"default": "hoursAndMinutes",
-					"enum": ["hoursAndMinutes","decimalHours","both"],
-					"enumDescriptions": ["Hours and minutes", "Hours with two decimals", "both other choices" ],
+					"enum": ["hoursAndMinutes","hours","minutesOrHours"],
+					"enumDescriptions": ["Minutes if less of 1 hour or hours if greater", "Hours and minutes", "Hours with two decimals" ],
 					"description": "Used to view TimeSpan"
 				},
 				"mytime.timeSpanHoursAndMinutesFormat": {
